@@ -7,6 +7,7 @@
 #define TEABOT__RESPONSE_ROUTES_HPP
 
 #include <string>
+#include <my_pcre.h>
 #include <classes/Bot.hpp>
 
 namespace TeaBot {
@@ -23,14 +24,23 @@ typedef enum {
 
 class ResponseRoutes
 {
-private:
+public:
     Bot *bot;
     std::string text;
     msg_type_enum msg_type;
-public:
+    static void initRoutes();
     ResponseRoutes(Bot *bot);
     void execute();
 };
+
+typedef struct {
+    ResponseRoutes res;
+} route_pass;
+
+typedef struct {
+    pcre2_code *pat;
+    std::function<bool(ResponseRoutes *)> handler;
+} routes;
 
 } // namespace Bot.hpp
 

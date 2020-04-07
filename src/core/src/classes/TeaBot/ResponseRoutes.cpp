@@ -7,6 +7,7 @@
 #include <iostream>
 #include <cstdio>
 #include <string>
+#include <string.h>
 
 #include <macros.hpp>
 #include <classes/ResponseRoutes.hpp>
@@ -14,6 +15,18 @@
 namespace TeaBot {
 
 using json = nlohmann::json;
+
+routes rts[3];
+#define routes_amt (sizeof(rts)/sizeof(rts[0]))
+
+void ResponseRoutes::initRoutes()
+{
+    rts[0].pat = mp_compile("^\\/debug");
+    rts[0].handler = [](ResponseRoutes *res){
+        std::cout << res->text << std::endl;
+        return true;
+    };
+}
 
 ResponseRoutes::ResponseRoutes(Bot *bot)
 {
@@ -29,6 +42,7 @@ ResponseRoutes::ResponseRoutes(Bot *bot)
 void ResponseRoutes::execute()
 {
     std::cout << text;
+    rts[0].handler(this);
 }
 
 } // namespace TeaBot
