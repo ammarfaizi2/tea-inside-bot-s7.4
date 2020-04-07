@@ -1,12 +1,11 @@
 
-BASEDIR = ~$$BASEDIR$$~
-MAIN_BIN = icetea
-LIB_SHARED_BIN = libicetea-s7.so
+BASEDIR = /home/ammarfaizi2/project/now/bot-s7.4/src/core
+LIB_SHARED_BIN = libteabot7.so
 COMPILER = g++
 LINKER = g++
 LIBS = -lpthread
 STD_FLAGS = -std=c++17 -Wall
-CONSTANTS = -DTEA_INSIDE_BOT_VERSION=7.0
+CONSTANTS = -DTEA_INSIDE_BOT_VERSION=7.4
 
 INCLUDE = -I${BASEDIR}/include/ -I${BASEDIR}/src/third_party
 SOURCE_DIR = src/
@@ -31,7 +30,7 @@ DEPDIR = ${SOURCES_DIR:%=${ROOT_DEPDIR}/%}
 DEPFLAGS = -MT $@ -MMD -MP -MF ${ROOT_DEPDIR}/$*.d
 DEPFILES = ${SOURCES:%=${ROOT_DEPDIR}/%.d}
 
-all: ${MAIN_BIN}
+all: ${LIB_SHARED_BIN}
 
 ${ROOT_DEPDIR}:
 	mkdir -p $@
@@ -44,9 +43,6 @@ ${OBJECTS}: | ${DEPDIR}
 
 ${LIB_SHARED_BIN}: ${OBJECTS}
 	${LINKER} -shared ${LINKER_FLAGS} -o ${LIB_SHARED_BIN} ${OBJECTS}
-
-${MAIN_BIN}: ${LIB_SHARED_BIN}
-	${LINKER} ${LINKER_FLAGS} -o ${MAIN_BIN} main.cpp -licetea-s7 -L${BASEDIR}
 
 -include ${DEPFILES}
 
