@@ -12,11 +12,11 @@ SOURCE_DIR = src/
 ROOT_DEPDIR = .deps
 
 ifeq (${RELEASE_MODE},1)
-	LINKER_FLAGS = -Wl,-R -Wl,${BASEDIR} ${INCLUDE} ${STD_FLAGS} -fno-stack-protector -Ofast ${CONSTANTS}
-	COMPILER_FLAGS = ${INCLUDE} ${STD_FLAGS} -fno-stack-protector -Ofast ${CONSTANTS} -c
+	LINKER_FLAGS = -fPIC -Wl,-R -Wl,${BASEDIR} ${INCLUDE} ${STD_FLAGS} -fno-stack-protector -Ofast ${CONSTANTS}
+	COMPILER_FLAGS = -fPIC ${INCLUDE} ${STD_FLAGS} -fno-stack-protector -Ofast ${CONSTANTS} -c
 else
-	LINKER_FLAGS = -Wl,-R -Wl,${BASEDIR} ${INCLUDE} ${STD_FLAGS} -fstack-protector-strong -ggdb3 -O0 -DICETEA_DEBUG ${CONSTANTS}
-	COMPILER_FLAGS = ${INCLUDE} ${STD_FLAGS} -fstack-protector-strong -ggdb3 -O0 -DICETEA_DEBUG ${CONSTANTS} -c
+	LINKER_FLAGS = -fPIC -Wl,-R -Wl,${BASEDIR} ${INCLUDE} ${STD_FLAGS} -fstack-protector-strong -ggdb3 -O0 -DICETEA_DEBUG ${CONSTANTS}
+	COMPILER_FLAGS = -fPIC ${INCLUDE} ${STD_FLAGS} -fstack-protector-strong -ggdb3 -O0 -DICETEA_DEBUG ${CONSTANTS} -c
 endif
 
 SOURCES  = $(shell find ${SOURCE_DIR} -name '*.c')

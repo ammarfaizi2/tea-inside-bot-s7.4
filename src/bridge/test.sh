@@ -1,1 +1,1 @@
-php -d extension=$(pwd)/modules/teabot7.so test.php
+php -d extension=$(pwd)/.libs/teabot7.so test.php

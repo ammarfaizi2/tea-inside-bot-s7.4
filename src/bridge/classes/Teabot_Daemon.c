@@ -1,9 +1,11 @@
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "../php_teabot7.h"
 
 teabot_struct teabot;
 zend_class_entry *teabot_daemon_ce;
+void init_daemon(char *);
 
 /**
  * @param string $token
@@ -24,7 +26,16 @@ PHP_METHOD(TeaBot_Daemon, __construct)
 
 PHP_METHOD(TeaBot_Daemon, passPayload)
 {
-    printf("passPayload\n");
+    size_t payload_len;
+    char *pstr, *payload_str;
+
+    ZEND_PARSE_PARAMETERS_START(1, 1)
+        Z_PARAM_STRING(payload_str, payload_len)
+    ZEND_PARSE_PARAMETERS_END();
+
+    pstr = (char *)malloc(payload_len + 1);
+    strcpy(pstr, payload_str);
+    init_daemon(pstr);
 }
 
 const zend_function_entry teabot_daemon_class_methods[] = {
