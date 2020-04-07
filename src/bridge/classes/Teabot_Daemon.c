@@ -5,7 +5,8 @@
 
 teabot_struct teabot;
 zend_class_entry *teabot_daemon_ce;
-void init_daemon(char *);
+void init_daemon();
+void *execute_payload(void *payload);
 
 /**
  * @param string $token
@@ -22,6 +23,8 @@ PHP_METHOD(TeaBot_Daemon, __construct)
 
     zend_update_property_stringl(teabot_daemon_ce, getThis(), ZEND_STRL("token"),
         teabot.token, token_len TSRMLS_CC);
+
+    init_daemon();
 }
 
 PHP_METHOD(TeaBot_Daemon, passPayload)
@@ -35,7 +38,10 @@ PHP_METHOD(TeaBot_Daemon, passPayload)
 
     pstr = (char *)malloc(payload_len + 1);
     strcpy(pstr, payload_str);
-    init_daemon(pstr);
+
+    pthread_t thread;
+    pthread_create(&thread, NULL, execute_payload, (void *)pstr);
+    pthread_detach(thread);
 }
 
 const zend_function_entry teabot_daemon_class_methods[] = {

@@ -1,3 +1,8 @@
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @version 7.4.0
+ * @license MIT
+ */
 
 #include <my_pcre.h>
 
