@@ -1,0 +1,1 @@
+php -d extension=$(pwd)/modules/teabot7.so test.php
