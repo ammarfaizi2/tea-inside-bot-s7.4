@@ -1,0 +1,11 @@
+*.o
+*.so
+*.swo
+*.tmp
+*.log
+*.lock
+/.phpintel/
+/vendor/
+/build/
+/config.php
+/config.ini
