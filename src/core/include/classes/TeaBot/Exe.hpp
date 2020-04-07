@@ -11,12 +11,10 @@
 
 namespace TeaBot {
 
-using json = nlohmann::json;
-
 class Exe
 {
 public:
-    static void post(std::string method, json data);
+    static char *post(std::string method, std::string data);
 };
 
 } // namespace TeaBot

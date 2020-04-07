@@ -5,10 +5,13 @@
  */
 #include <iostream>
 
-#include <classes/TeaBot/Responses/Start.hpp>
 #include <macros.hpp>
+#include <classes/TeaBot/Exe.hpp>
+#include <classes/TeaBot/Responses/Start.hpp>
 
 namespace TeaBot::Responses {
+
+using namespace TeaBot;
 
 Start::Start(route_pass &_r): r(_r)
 {
@@ -16,7 +19,14 @@ Start::Start(route_pass &_r): r(_r)
 
 bool Start::run()
 {
-    std::cout << "text: " << r.res.text << std::endl;
+    json d = {
+        {"chat_id", -1001226735471},
+        {"reply_to_message_id", 122},
+        {"text", ""}
+    };
+    char *test = Exe::post("sendMessage", d.dump());
+    std::cout << test << std::endl;
+    free(test);
     return true;
 }
 

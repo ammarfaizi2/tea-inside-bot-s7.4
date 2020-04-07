@@ -44,8 +44,6 @@ void ResponseRoutes::execute()
             my_pcre_res_destroy(&(r.match));
         }
     }
-
-    std::cout << teabot.token << std::endl;
 }
 
 void ResponseRoutes::initRoutes()

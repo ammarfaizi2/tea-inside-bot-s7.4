@@ -3,7 +3,7 @@ BASEDIR = /home/ammarfaizi2/project/now/bot-s7.4/src/core
 LIB_SHARED_BIN = libteabot7.so
 COMPILER = g++
 LINKER = g++
-LIBS = -lpthread
+LIBS = -lpthread -lcurl
 STD_FLAGS = -std=c++17 -Wall
 CONSTANTS = -DTEA_INSIDE_BOT_VERSION=7.4
 
@@ -12,8 +12,8 @@ SOURCE_DIR = src/
 ROOT_DEPDIR = .deps
 
 ifeq (${RELEASE_MODE},1)
-	LINKER_FLAGS = -fPIC -Wl,-R -Wl,${BASEDIR} ${INCLUDE} ${STD_FLAGS} -fno-stack-protector -Ofast ${CONSTANTS}
-	COMPILER_FLAGS = -fPIC ${INCLUDE} ${STD_FLAGS} -fno-stack-protector -Ofast ${CONSTANTS} -c
+	LINKER_FLAGS = -fPIC -Wl,-R -Wl,${BASEDIR} ${INCLUDE} ${STD_FLAGS} -fno-stack-protector -Ofast ${CONSTANTS} -s
+	COMPILER_FLAGS = -fPIC ${INCLUDE} ${STD_FLAGS} -fno-stack-protector -Ofast ${CONSTANTS} -s -c
 else
 	LINKER_FLAGS = -fPIC -Wl,-R -Wl,${BASEDIR} ${INCLUDE} ${STD_FLAGS} -fstack-protector-strong -ggdb3 -O0 -DICETEA_DEBUG ${CONSTANTS}
 	COMPILER_FLAGS = -fPIC ${INCLUDE} ${STD_FLAGS} -fstack-protector-strong -ggdb3 -O0 -DICETEA_DEBUG ${CONSTANTS} -c

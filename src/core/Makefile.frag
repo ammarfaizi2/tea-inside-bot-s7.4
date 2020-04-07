@@ -3,7 +3,7 @@ BASEDIR = ~~BASEDIR~~
 LIB_SHARED_BIN = libteabot7.so
 COMPILER = g++
 LINKER = g++
-LIBS = -lpthread
+LIBS = -lpthread -lcurl
 STD_FLAGS = -std=c++17 -Wall
 CONSTANTS = -DTEA_INSIDE_BOT_VERSION=7.4
 

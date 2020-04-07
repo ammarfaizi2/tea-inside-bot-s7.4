@@ -1,6 +1,6 @@
 <?php
 
-$st = new TeaBot\Daemon("test abc");
+$st = new TeaBot\Daemon("466965678:AAH__Cg3mqt3QjLh2f6GkKnOKTXbKtUowj8");
 $st->passPayload('{
     "update_id": 345747644,
     "message": {
@@ -31,3 +31,4 @@ $st->passPayload('{
         "reply_to_message": null
     }
 }');
+sleep(10);
