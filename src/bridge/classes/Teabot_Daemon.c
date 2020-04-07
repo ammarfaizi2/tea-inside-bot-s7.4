@@ -15,7 +15,7 @@ void *execute_payload(void *payload);
  */
 PHP_METHOD(TeaBot_Daemon, __construct)
 {
-	size_t token_len;
+    size_t token_len;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
         Z_PARAM_STRING(teabot.token, token_len)
