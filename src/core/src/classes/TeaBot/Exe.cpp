@@ -8,6 +8,7 @@
 #include <cstdio>
 #include <string>
 
+#include <nlohmann/json.hpp>
 #include <classes/TeaBot/Exe.hpp>
 
 #ifndef TEABOT_STRUCT_H

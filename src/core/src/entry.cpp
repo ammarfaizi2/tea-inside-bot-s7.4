@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include <string>
 #include <stdlib.h>
-#include <classes/Bot.hpp>
-#include <classes/ResponseRoutes.hpp>
+#include <classes/TeaBot/Bot.hpp>
+#include <classes/TeaBot/ResponseRoutes.hpp>
 
 using namespace TeaBot;
 

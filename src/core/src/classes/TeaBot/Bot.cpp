@@ -9,8 +9,8 @@
 #include <string>
 
 #include <macros.hpp>
-#include <classes/Bot.hpp>
-#include <classes/ResponseRoutes.hpp>
+#include <classes/TeaBot/Bot.hpp>
+#include <classes/TeaBot/ResponseRoutes.hpp>
 
 namespace TeaBot {
 

@@ -5,7 +5,7 @@
  */
 #include <iostream>
 
-#include <classes/Responses/Start.hpp>
+#include <classes/TeaBot/Responses/Start.hpp>
 #include <macros.hpp>
 
 namespace TeaBot::Responses {

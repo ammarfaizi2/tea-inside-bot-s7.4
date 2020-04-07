@@ -6,7 +6,7 @@
 #ifndef TEABOT__RESPONSES__START_HPP
 #define TEABOT__RESPONSES__START_HPP
 
-#include <classes/ResponseRoutes.hpp>
+#include <classes/TeaBot/ResponseRoutes.hpp>
 
 namespace TeaBot::Responses {
 class Start

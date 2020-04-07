@@ -10,8 +10,8 @@
 #include <string.h>
 
 #include <macros.hpp>
-#include <classes/ResponseRoutes.hpp>
-#include <classes/Responses/Start.hpp>
+#include <classes/TeaBot/ResponseRoutes.hpp>
+#include <classes/TeaBot/Responses/Start.hpp>
 
 namespace TeaBot {
 

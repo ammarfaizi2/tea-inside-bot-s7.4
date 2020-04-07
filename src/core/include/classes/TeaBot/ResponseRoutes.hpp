@@ -8,7 +8,7 @@
 
 #include <string>
 #include <my_pcre.h>
-#include <classes/Bot.hpp>
+#include <classes/TeaBot/Bot.hpp>
 
 namespace TeaBot {
 
