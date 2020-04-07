@@ -7,6 +7,7 @@ void my_pcre_res_destroy(pcre_res *result)
         free(result->r[i]);
     }
     free(result->r);
+    result->r = NULL;
 }
 
 pcre2_code *my_pcre_compile(const unsigned char *pattern)

@@ -33,13 +33,15 @@ public:
     void execute();
 };
 
-typedef struct {
-    ResponseRoutes res;
+typedef struct _route_pass {
+    ResponseRoutes &res;
+    pcre_res match;
+    _route_pass(ResponseRoutes &_r): res(_r) {}
 } route_pass;
 
 typedef struct {
     pcre2_code *pat;
-    std::function<bool(ResponseRoutes *)> handler;
+    std::function<bool(route_pass &)> handler;
 } routes;
 
 } // namespace Bot.hpp
