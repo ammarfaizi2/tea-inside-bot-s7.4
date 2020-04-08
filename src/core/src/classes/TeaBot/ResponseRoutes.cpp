@@ -12,18 +12,19 @@
 #include <macros.hpp>
 #include <classes/TeaBot/ResponseRoutes.hpp>
 #include <classes/TeaBot/Responses/Start.hpp>
+#include <classes/TeaBot/Responses/AMIKOM/Mahasiswa.hpp>
 
 namespace TeaBot {
 
 using json = nlohmann::json;
 using namespace TeaBot::Responses;
+using namespace TeaBot::Responses::AMIKOM;
 
 routes rts[2];
 #define routes_amt (sizeof(rts)/sizeof(rts[0]))
 
 ResponseRoutes::ResponseRoutes(Bot *bot)
 {
-  std::cout << "c routes...\n";
   this->bot = bot;
   if (isset(bot->in["message"]["text"])) {
     text = bot->in["message"]["text"];
@@ -61,9 +62,12 @@ void ResponseRoutes::initRoutes()
     return ret;
   };
 
-  rts[1].pat = mp_compile("^(\\\\|\\.|\\!)?amikom\\s+login\\s(.+)\\s(.+)");
+  rts[1].pat = mp_compile("^(?:\\\\|\\.|\\!)?amikom\\s+login\\s(.+)\\s(.+)");
   rts[1].handler = [](route_pass &r) {
-    return true;
+    Mahasiswa *st = new Mahasiswa(r);
+    bool ret = st->login();
+    delete st;
+    return ret;
   };
 }
 
