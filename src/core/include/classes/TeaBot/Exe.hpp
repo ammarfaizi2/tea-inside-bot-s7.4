@@ -14,7 +14,7 @@ namespace TeaBot {
 class Exe
 {
 public:
-    static char *post(std::string method, std::string data);
+  static char *post(std::string method, std::string data);
 };
 
 } // namespace TeaBot

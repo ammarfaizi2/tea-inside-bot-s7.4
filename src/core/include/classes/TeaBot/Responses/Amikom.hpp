@@ -3,19 +3,19 @@
 * @version 7.4.0
 * @license MIT
 */
-#ifndef TEABOT__RESPONSES__START_HPP
-#define TEABOT__RESPONSES__START_HPP
+#ifndef TEABOT__RESPONSES__AMIKOM_HPP
+#define TEABOT__RESPONSES__AMIKOM_HPP
 
 #include <classes/TeaBot/ResponseRoutes.hpp>
 
 namespace TeaBot::Responses {
-class Start
+class Amikom
 {
 private:
   route_pass r;
 public:
-  Start(route_pass &_r);
-  bool run();
+  Amikom(route_pass &_r);
+  bool login();
 };
 } // namespace TeaBot::Responses
 

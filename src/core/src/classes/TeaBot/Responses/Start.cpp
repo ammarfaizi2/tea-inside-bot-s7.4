@@ -19,15 +19,16 @@ Start::Start(route_pass &_r): r(_r)
 
 bool Start::run()
 {
-    json d = {
-        {"chat_id", -1001226735471},
-        {"reply_to_message_id", 122},
-        {"text", ""}
-    };
-    char *test = Exe::post("sendMessage", d.dump());
-    std::cout << test << std::endl;
-    free(test);
-    return true;
+  char *test = Exe::post("sendMessage", json(
+    {
+      {"chat_id", r.res.bot->ind->chat_id},
+      {"reply_to_message_id", r.res.bot->ind->msg_id},
+      {"text", r.res.bot->in.dump(2)}
+    }
+  ).dump());
+  std::cout << test << std::endl;
+  free(test);
+  return true;
 }
 
 } // namespace TeaBot::Responses

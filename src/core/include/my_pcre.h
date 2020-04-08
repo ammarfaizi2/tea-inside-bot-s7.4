@@ -9,13 +9,13 @@
 #include <pcre2.h>
 
 typedef struct {
-    int count;
-    char **r;
+  int count;
+  char **r;
 } pcre_res;
 
 typedef struct {
-    int count;
-    pcre_res *r;
+  int count;
+  pcre_res *r;
 } pcre_res_all;
 
 void my_pcre_res_destroy(pcre_res *result);

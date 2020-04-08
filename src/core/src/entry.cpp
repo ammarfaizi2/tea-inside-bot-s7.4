@@ -22,22 +22,22 @@ extern "C" {
 
 void init_daemon()
 {
-    ResponseRoutes::initRoutes();
-    curl_global_init(CURL_GLOBAL_DEFAULT);
-    #define TELEGRAM_API_BASEURL "https://api.telegram.org/bot%s"
-    api_baseurl = (char *)malloc(sizeof(TELEGRAM_API_BASEURL) + strlen(teabot.token) + 2);
-    sprintf(api_baseurl, TELEGRAM_API_BASEURL, teabot.token);
-    #undef TELEGRAM_API_BASEURL
-    api_baseurl_length = strlen(api_baseurl);
+  ResponseRoutes::initRoutes();
+  curl_global_init(CURL_GLOBAL_DEFAULT);
+  #define TELEGRAM_API_BASEURL "https://api.telegram.org/bot%s"
+  api_baseurl = (char *)malloc(sizeof(TELEGRAM_API_BASEURL) + strlen(teabot.token) + 2);
+  sprintf(api_baseurl, TELEGRAM_API_BASEURL, teabot.token);
+  #undef TELEGRAM_API_BASEURL
+  api_baseurl_length = strlen(api_baseurl);
 }
 
 void *execute_payload(char *payload)
-{    
-    Bot *st = new Bot(std::string(payload));
-    st->execute();
-    delete st;
-    free(payload);
-    return NULL;
+{  
+  Bot *st = new Bot(std::string(payload));
+  st->execute();
+  delete st;
+  free(payload);
+  return NULL;
 }
 
 }
