@@ -62,12 +62,7 @@ int my_pcre_find(pcre2_code *re, const unsigned char *subject, pcre_res* result)
   }
 
 ret:
-  if (re != NULL) {
-    pcre2_match_data_free(match_data);
-  }
-  if (re != NULL) {
-    pcre2_code_free(re);
-  }
+  pcre2_match_data_free(match_data);
   if (result != NULL) {
     result->count = rc;
   }

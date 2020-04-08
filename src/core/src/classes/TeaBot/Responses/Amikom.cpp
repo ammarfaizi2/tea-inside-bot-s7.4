@@ -8,7 +8,7 @@
 #include <macros.hpp>
 #include <curl/curl.h>
 #include <classes/TeaBot/Exe.hpp>
-#include <classes/TeaBot/Responses/Start.hpp>
+#include <classes/TeaBot/Responses/Amikom.hpp>
 
 namespace TeaBot::Responses {
 

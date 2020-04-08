@@ -18,7 +18,7 @@ namespace TeaBot {
 using json = nlohmann::json;
 using namespace TeaBot::Responses;
 
-routes rts[3];
+routes rts[2];
 #define routes_amt (sizeof(rts)/sizeof(rts[0]))
 
 ResponseRoutes::ResponseRoutes(Bot *bot)
@@ -63,7 +63,7 @@ void ResponseRoutes::initRoutes()
 
   rts[1].pat = mp_compile("^(\\\\|\\.|\\!)?amikom\\s+login\\s(.+)\\s(.+)");
   rts[1].handler = [](route_pass &r) {
-    
+    return true;
   };
 }
 

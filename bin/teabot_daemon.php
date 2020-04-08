@@ -4,7 +4,20 @@ error_reporting(E_ALL);
 set_time_limit(0);
 ob_implicit_flush();
 
-require __DIR__."/../../config.php";
+// declare(ticks=1);
+// $sig = function () {
+//     global $sock;
+//     echo "Got SIGINT!\n";
+//     (isset($sock) && $sock) and socket_close($sock);
+//     posix_kill(getmypid(), SIGKILL);
+//     exit;
+// };
+// pcntl_signal(SIGINT, $sig);
+// pcntl_signal(SIGTERM, $sig);
+// pcntl_signal(SIGHUP, $sig);
+// pcntl_signal(SIGCHLD, $sig);
+
+require __DIR__."/../config.php";
 
 $address = "0.0.0.0";
 $port = 10001;
@@ -30,14 +43,14 @@ echo "Listening on {$address}:{$port}...\n";
 
 do {
     if (($msgsock = socket_accept($sock)) === false) {
-        echo "socket_accept() failed: reason: " . socket_strerror(socket_last_error($sock)) . "\n";
+        echo "socket_accept() failed: reason: " . socket_strerror(socket_last_error($sock))."\n";
         break;
     }
 
     $buf = socket_read($msgsock, 7, PHP_NORMAL_READ);
-
-    if (false === ($buf = socket_read($msgsock, (int)$buf, PHP_NORMAL_READ))) {
-        echo "socket_read() failed: reason: " . socket_strerror(socket_last_error($msgsock)) . "\n";
+    var_dump($buf);
+    if (false === ($buf = socket_read($msgsock, (int)$buf, PHP_BINARY_READ))) {
+        echo "socket_read() failed: reason: " . socket_strerror(socket_last_error($msgsock))."\n";
         break;
     }
 
