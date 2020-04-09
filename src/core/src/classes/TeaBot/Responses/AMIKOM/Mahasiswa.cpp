@@ -45,13 +45,6 @@ bool Mahasiswa::login()
   char *res;
   char url[sizeof(BASE_END) * 2];
 
-  // std::cout << "Login\n"
-  //   << "Count: " << r.match.count << "\n"
-  //   << r.match.r[1] << "\n"
-  //   << r.match.r[2] << "\n";
-
-  std::cout << "pass: \""<<r.match.r[2]<<"\""<<std::endl;
-
   sprintf(url, BASE_END, "login", r.match.r[1], r.match.r[2], "");
   res = this->exec(url);
   d = json::parse(res);
@@ -72,6 +65,7 @@ bool Mahasiswa::login()
     res = this->getProfile();
     p = json::parse(res);
     free(res);
+
     if (
       isset(p["res"]) && isset(p["res"]["Mhs"]) &&
       isset(p["res"]["PeriodeAkademik"]) &&
@@ -83,9 +77,6 @@ bool Mahasiswa::login()
       isset(p["res"]["PeriodeAkademik"]["TahunAkademik"]) &&
       isset(p["res"]["PeriodeAkademik"]["Semester"])
     ) {
-
-      std::cout << "vtest" << std::endl;
-
       #define stdf(A) std::string(A)
       caption += 
         "<b>[Profil]</b>"
@@ -96,8 +87,6 @@ bool Mahasiswa::login()
         "\n<b>Periode Akademik: </b> "+stdf(p["res"]["PeriodeAkademik"]["TahunAkademik"])+
         "\n<b>Semester: </b>"+(std::to_string(p["res"]["PeriodeAkademik"].value("Semester", 0)));
 
-      std::cout << "rtest" << std::endl;
-
       res = Exe::post("sendPhoto",
         json({
           {"chat_id", r.res.bot->ind->chat_id},
@@ -107,10 +96,7 @@ bool Mahasiswa::login()
           {"parse_mode", "HTML"}
         }).dump()
       );
-
-      std::cout << "Profile res: "<< res << "\n";
     } else {
-      std::cout << "Invalid profile!\n";
     }
   } else {
 
@@ -136,7 +122,7 @@ char *Mahasiswa::exec(char *url)
   struct curl_slist *chunk = NULL;
   MemoryStruct mem;
 
-  std::cout << "Curl to URL: \"" << url << "\"" << std::endl;
+  debug_log(5, "Curl to URL: %s", url);
 
   curl = curl_easy_init();
   if (!curl) {

@@ -1,7 +1,9 @@
 
 #include <stdio.h>
-#include <macros.h>
 #include <stdarg.h>
+
+#define DEBUGGER_CPP
+#include <macros.hpp>
 
 #ifdef ICETEA_DEBUG
 
