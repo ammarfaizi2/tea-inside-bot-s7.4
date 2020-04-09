@@ -24,19 +24,43 @@ using namespace TeaBot;
 
 Mahasiswa::Mahasiswa(route_pass &_r): r(_r)
 {
-  std::cout << "Mahasiswa constructor\n";
   #define init_dir(A) \
-    std::cout << "test: \"" << A << "\"" << std::endl; \
     if (access(A, F_OK) == -1) { \
       mkdir(A, 0750); \
     }
 
-  std::cout << "token: " << teabot.token << std::endl;
   init_dir(teabot.storage_path);
   init_dir(teabot.amikom_storage_path);
   init_dir(teabot.amikom_storage_mhs_path);
 
-  // #undef init_dir
+  userdir = (char *)malloc(
+    sizeof(char) * 
+    (strlen(teabot.amikom_storage_mhs_path) + 22)
+  );
+  nimfile = (char *)malloc(
+    sizeof(char) * 
+    (strlen(teabot.amikom_storage_mhs_path) + 22 + sizeof("/nim"))
+  );
+
+  sprintf(userdir, "%s/%ld", teabot.amikom_storage_mhs_path,
+    r.res.bot->ind->user_id);
+  sprintf(nimfile, "%s/nim", userdir);
+  init_dir(userdir);
+
+  if (access(nimfile, F_OK) != -1) {
+    FILE *handle = fopen(nimfile, "r");
+    if (!fgets(nim, sizeof("19.11.3041"), handle)) {
+      nim = NULL;
+    }
+    fclose(handle);
+  }
+  #undef init_dir
+}
+
+Mahasiswa::~Mahasiswa()
+{
+  free(this->userdir);
+  free(this->nimfile);
 }
 
 bool Mahasiswa::login()
@@ -106,6 +130,11 @@ bool Mahasiswa::login()
       );
       free(res);
     }
+
+    FILE *handle = fopen(nimfile, "w");
+    fputs(r.match.r[1], handle);
+    fclose(handle);
+
   } else {
     res = Exe::post("sendMessage",
       json({

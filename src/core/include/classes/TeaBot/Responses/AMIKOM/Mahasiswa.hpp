@@ -15,9 +15,13 @@ class Mahasiswa
 {
 private:
   route_pass &r;
+  char *userdir;
+  char *nimfile;
+  char *nim = NULL;
   char *exec(char *url);
 public:
   Mahasiswa(route_pass &_r);
+  ~Mahasiswa();
   bool login();
   char *getProfile();
 };
