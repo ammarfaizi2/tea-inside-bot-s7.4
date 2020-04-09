@@ -20,7 +20,7 @@ ob_implicit_flush();
 require __DIR__."/../config.php";
 
 $address = "0.0.0.0";
-$port = 10001;
+$port = 10002;
 
 $daemon = new TeaBot\Daemon(BOT_TOKEN);
 
