@@ -51,7 +51,7 @@ Mahasiswa::Mahasiswa(route_pass &_r): r(_r)
   sprintf(userdir, "%s/%ld", teabot.amikom_storage_mhs_path,
     r.res.bot->ind->user_id);
   sprintf(nimfile, "%s/nim", userdir);
-  sprintf(passfile, "%s/nim", userdir);
+  sprintf(passfile, "%s/pass", userdir);
   init_dir(userdir);
 
   if (access(nimfile, F_OK) != -1) {
