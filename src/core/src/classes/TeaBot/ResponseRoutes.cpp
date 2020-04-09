@@ -10,6 +10,7 @@
 #include <string.h>
 
 #include <macros.hpp>
+#include <my_curl.hpp>
 #include <classes/TeaBot/ResponseRoutes.hpp>
 #include <classes/TeaBot/Responses/Start.hpp>
 #include <classes/TeaBot/Responses/AMIKOM/Mahasiswa.hpp>

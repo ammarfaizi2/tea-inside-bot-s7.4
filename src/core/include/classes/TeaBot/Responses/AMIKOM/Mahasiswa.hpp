@@ -14,6 +14,7 @@ class Mahasiswa
 {
 private:
   route_pass &r;
+  char *exec(char *url);
 public:
   Mahasiswa(route_pass &_r);
   bool login();

@@ -19,11 +19,6 @@ extern teabot_struct teabot;
 
 namespace TeaBot {
 
-typedef struct {
-    char *data;
-    size_t size;
-    size_t allocated;
-} MemoryStruct;
 static char *curl_post(char *url, char *data);
 
 char *Exe::post(std::string method, std::string data)
@@ -34,20 +29,6 @@ char *Exe::post(std::string method, std::string data)
     ret = curl_post(url, (char *)(data.c_str()));
     free(url);
     return ret;
-}
-
-static size_t
-WriteMemoryCallback(char *contents, size_t size, size_t nmemb, MemoryStruct *userp)
-{
-    size_t realsize = size * nmemb;
-    if ((userp->size + realsize) >= userp->allocated) {
-        userp->allocated += 2048 + realsize;
-        userp->data = (char *)realloc(userp->data, userp->allocated);
-    }
-    memcpy(&(userp->data[userp->size]), contents, realsize);
-    userp->size += realsize;
-
-    return realsize;
 }
 
 static char *curl_post(char *url, char *data)
