@@ -35,9 +35,10 @@ void init_daemon()
   debug_log(1, "Initializing daemon...");
 
   // Show config.
+  debug_log(3, "config token: \"%s\"", teabot.token);
   debug_log(3, "config storage_path: \"%s\"", teabot.storage_path);
-  debug_log(1, "config amikom_storage_path: \"%s\"", teabot.amikom_storage_path);
-  debug_log(1, "config amikom_storage_mhs_path: \"%s\"", teabot.amikom_storage_mhs_path);
+  debug_log(3, "config amikom_storage_path: \"%s\"", teabot.amikom_storage_path);
+  debug_log(3, "config amikom_storage_mhs_path: \"%s\"", teabot.amikom_storage_mhs_path);
 }
 
 void *execute_payload(char *payload)

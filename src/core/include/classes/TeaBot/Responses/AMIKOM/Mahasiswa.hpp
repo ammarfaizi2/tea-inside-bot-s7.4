@@ -18,12 +18,17 @@ private:
   char *userdir;
   char *nimfile;
   char *nim = NULL;
+  char *passfile;
+  char *pass = NULL;
   char *exec(char *url);
+  char *getProfile();
+  bool hasLoggedIn();
 public:
   Mahasiswa(route_pass &_r);
   ~Mahasiswa();
   bool login();
-  char *getProfile();
+  bool jadwal();
+  bool listPresensi();
 };
 
 };

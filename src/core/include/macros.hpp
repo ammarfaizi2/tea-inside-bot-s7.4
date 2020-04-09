@@ -4,6 +4,8 @@
 
 #define isset(A) (A != nullptr)
 
+#include <string.h>
+
 #ifdef ICETEA_DEBUG
 
 #include <time.h>
@@ -37,6 +39,10 @@ __attribute__((always_inline)) inline static char *__internal_get_rawtime()
   }
 #else
 #define debug_log(...)
-#endif
+#endif // #ifndef DEBUGGER_CPP
+
+
+char *strtolower(char *str, unsigned int len);
+char *strtoupper(char *str, unsigned int len);
 
 #endif

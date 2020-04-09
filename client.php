@@ -25,7 +25,7 @@ $json = '{
     },
     "message_id": 103,
     "reply_to_message": null,
-    "text": "!amikom login 19.11.3041 16474"
+    "text": "dqc"
   },
   "update_id": 345747644
 }';

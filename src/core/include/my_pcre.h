@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <pcre2.h>
+#include <stdint.h>
 
 typedef struct {
   int count;
@@ -19,9 +20,9 @@ typedef struct {
 } pcre_res_all;
 
 void my_pcre_res_destroy(pcre_res *result);
-pcre2_code *my_pcre_compile(const unsigned char *pattern);
+pcre2_code *my_pcre_compile(const unsigned char *pattern, uint32_t options);
 int my_pcre_find(pcre2_code *re, const unsigned char *subject, pcre_res* result);
 
-#define mp_compile(A) my_pcre_compile((const unsigned char *)A)
+#define mp_compile(A, B) my_pcre_compile((const unsigned char *)A, B)
 
 #endif

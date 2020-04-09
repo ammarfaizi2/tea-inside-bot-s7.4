@@ -15,12 +15,12 @@ void my_pcre_res_destroy(pcre_res *result)
   result->r = NULL;
 }
 
-pcre2_code *my_pcre_compile(const unsigned char *pattern)
+pcre2_code *my_pcre_compile(const unsigned char *pattern, uint32_t options)
 {
   int err_number;
   pcre2_code *re;
   PCRE2_SIZE err_offset;
-  re = pcre2_compile(pattern, PCRE2_ZERO_TERMINATED, 0, &err_number, &err_offset, NULL);
+  re = pcre2_compile(pattern, PCRE2_ZERO_TERMINATED, options, &err_number, &err_offset, NULL);
   if (re == NULL) {
     PCRE2_UCHAR8 buffer[256];
     pcre2_get_error_message(err_number, buffer, sizeof(buffer));
