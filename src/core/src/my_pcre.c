@@ -4,6 +4,7 @@
  * @license MIT
  */
 
+
 #include <my_pcre.h>
 
 void my_pcre_res_destroy(pcre_res *result)

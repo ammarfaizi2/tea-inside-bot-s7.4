@@ -308,7 +308,7 @@ char *Mahasiswa::exec(char *url)
   struct curl_slist *chunk = NULL;
   MemoryStruct mem;
 
-  debug_log(5, "Curl to URL: %s", url);
+  debug_log(5, "Curl to URL: \"%s\"", url);
 
   curl = curl_easy_init();
   if (!curl) {
