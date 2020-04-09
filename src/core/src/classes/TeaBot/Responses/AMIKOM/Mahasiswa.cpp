@@ -327,7 +327,7 @@ char *Mahasiswa::exec(char *url)
   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
   curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&mem);
   curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION,
-    (void (*)(void*, size_t, size_t, void *))WriteMemoryCallback);
+    (void (*)(void *, size_t, size_t, void *))WriteMemoryCallback);
 
   res = curl_easy_perform(curl);
   if (res == CURLE_OK) {
