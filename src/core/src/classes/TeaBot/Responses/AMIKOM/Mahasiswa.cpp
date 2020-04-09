@@ -97,11 +97,25 @@ bool Mahasiswa::login()
         }).dump()
       );
     } else {
+      res = Exe::post("sendMessage",
+        json({
+          {"chat_id", r.res.bot->ind->chat_id},
+          {"reply_to_message_id", r.res.bot->ind->msg_id},
+          {"text", "Cannot retrieve profile info!"}
+        }).dump()
+      );
+      free(res);
     }
   } else {
-
+    res = Exe::post("sendMessage",
+      json({
+        {"chat_id", r.res.bot->ind->chat_id},
+        {"reply_to_message_id", r.res.bot->ind->msg_id},
+        {"text", "Login Failed!"}
+      }).dump()
+    );
+    free(res);
   }
-
   return true;
 }
 
