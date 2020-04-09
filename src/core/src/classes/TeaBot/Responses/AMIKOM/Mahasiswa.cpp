@@ -15,7 +15,7 @@
 
 #define stdf(A) std::string(A)
 #define stdft(A) std::to_string(A)
-#define API_BASE_URL "http://127.0.0.1:8000"
+#define API_BASE_URL "https://amikom.teainside.org"
 #define BASE_END API_BASE_URL"/api.php?type=mahasiswa&act=%s&nim=%s&pass=%s%s"
 
 extern teabot_struct teabot;
