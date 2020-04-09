@@ -57,7 +57,9 @@ Mahasiswa::Mahasiswa(route_pass &_r): r(_r)
   if (access(nimfile, F_OK) != -1) {
     FILE *handle = fopen(nimfile, "r");
     nim = (char *)malloc(sizeof("xx.xx.xxxx") + 1);
-    if ((handle != NULL) && (!fgets(nim, sizeof("xx.xx.xxxx"), handle))) {
+    if ((handle != NULL) && (fgets(nim, sizeof("xx.xx.xxxx"), handle))) {
+      nim = trim(nim);
+    } else {
       nim = NULL;
     }
     fclose(handle);
@@ -66,7 +68,9 @@ Mahasiswa::Mahasiswa(route_pass &_r): r(_r)
   if (access(passfile, F_OK) != -1) {
     FILE *handle = fopen(passfile, "r");
     pass = (char *)malloc(9);
-    if ((handle != NULL) && (!fgets(pass, 8, handle))) {
+    if ((handle != NULL) && (fgets(pass, 8, handle))) {
+      pass = trim(pass);
+    } else {
       pass = NULL;
     }
     fclose(handle);

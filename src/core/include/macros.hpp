@@ -41,7 +41,7 @@ __attribute__((always_inline)) inline static char *__internal_get_rawtime()
 #define debug_log(...)
 #endif // #ifndef DEBUGGER_CPP
 
-
+char *trim(char *str);
 char *strtolower(char *str, unsigned int len);
 char *strtoupper(char *str, unsigned int len);
 
