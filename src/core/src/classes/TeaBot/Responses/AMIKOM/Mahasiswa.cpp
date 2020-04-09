@@ -49,7 +49,7 @@ Mahasiswa::Mahasiswa(route_pass &_r): r(_r)
 
   if (access(nimfile, F_OK) != -1) {
     FILE *handle = fopen(nimfile, "r");
-    if (!fgets(nim, sizeof("19.11.3041"), handle)) {
+    if (!fgets(nim, sizeof("xx.xx.xxxx"), handle)) {
       nim = NULL;
     }
     fclose(handle);
@@ -147,7 +147,6 @@ bool Mahasiswa::login()
   }
   return true;
 }
-
 
 char *Mahasiswa::getProfile()
 {
