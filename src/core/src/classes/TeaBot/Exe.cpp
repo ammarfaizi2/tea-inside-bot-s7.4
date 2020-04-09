@@ -8,8 +8,8 @@
 #include <cstdio>
 #include <string>
 #include <string.h>
-#include <curl/curl.h>
 
+#include <my_curl.hpp>
 #include <teabot_struct.h>
 #include <classes/TeaBot/Exe.hpp>
 
@@ -44,6 +44,8 @@ static char *curl_post(char *url, char *data)
         ret = NULL;
         goto ret;
     }
+
+    std::cout << "Curl to URL: " << url << std::endl;
 
     mem.data = (char *)malloc(sizeof(char) * 2048);
     mem.size = 0;

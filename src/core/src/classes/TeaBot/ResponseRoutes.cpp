@@ -10,7 +10,6 @@
 #include <string.h>
 
 #include <macros.hpp>
-#include <my_curl.hpp>
 #include <classes/TeaBot/ResponseRoutes.hpp>
 #include <classes/TeaBot/Responses/Start.hpp>
 #include <classes/TeaBot/Responses/AMIKOM/Mahasiswa.hpp>
@@ -41,6 +40,8 @@ void ResponseRoutes::execute()
   for (uint8_t i = 0; i < routes_amt; i++) {
     if (my_pcre_find(rts[i].pat,
       (const unsigned char *)(text.c_str()), &(r.match))) {
+
+      std::cout << "Match text: \""<<text.c_str()<<"\"\n";
       std::cout << "Match!\n";
       if (rts[i].handler(r)) {
         break;

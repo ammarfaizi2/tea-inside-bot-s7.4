@@ -6,7 +6,10 @@
 #ifndef TEABOT__RESPONSES__AMIKOM__MAHASISWA_HPP
 #define TEABOT__RESPONSES__AMIKOM__MAHASISWA_HPP
 
+#include <teabot_struct.h>
 #include <classes/TeaBot/ResponseRoutes.hpp>
+
+extern teabot_struct teabot;
 
 namespace TeaBot::Responses::AMIKOM {
 
@@ -18,6 +21,7 @@ private:
 public:
   Mahasiswa(route_pass &_r);
   bool login();
+  char *getProfile();
 };
 
 };

@@ -59,6 +59,7 @@ int my_pcre_find(pcre2_code *re, const unsigned char *subject, pcre_res* result)
     size_t substr_length = ovector[2*i+1] - ovector[2*i];
     result->r[i] = (char *)malloc(sizeof(char) * (substr_length + 1));
     memcpy(result->r[i], substr_start, substr_length);
+    result->r[i][substr_length] = 0;
   }
 
 ret:
