@@ -15,14 +15,18 @@ void *execute_payload(void *payload);
  */
 PHP_METHOD(TeaBot_Daemon, __construct)
 {
+    char *token;
     size_t token_len;
 
     ZEND_PARSE_PARAMETERS_START(1, 1)
-        Z_PARAM_STRING(teabot.token, token_len)
+        Z_PARAM_STRING(token, token_len)
     ZEND_PARSE_PARAMETERS_END();
 
     zend_update_property_stringl(teabot_daemon_ce, getThis(), ZEND_STRL("token"),
-        teabot.token, token_len TSRMLS_CC);
+        token, token_len TSRMLS_CC);
+
+    teabot.token = (char *)malloc(token_len + 1);
+    strcpy(teabot.token, token);
 
     init_daemon();
 }
@@ -55,9 +59,10 @@ PHP_METHOD(TeaBot_Daemon, config)
     ZEND_PARSE_PARAMETERS_END();
 
     #define RSW(A, B) \
-        if (!strcmp(A, v)) { \
+        if (!strcmp(A, k)) { \
             teabot.B = (char *)malloc(vlen + 1); \
             strcpy(teabot.B, v); \
+            printf("config %s: %s\n", k, teabot.B); \
         }
 
     RSW("STORAGE_PATH", storage_path) else

@@ -29,6 +29,7 @@ void init_daemon()
   sprintf(api_baseurl, TELEGRAM_API_BASEURL, teabot.token);
   #undef TELEGRAM_API_BASEURL
   api_baseurl_length = strlen(api_baseurl);
+  printf("storage_path: \"%s\"\n", teabot.storage_path);
 }
 
 void *execute_payload(char *payload)

@@ -6,7 +6,7 @@
 
 #ifndef TEABOT_STRUCT_H
 #define TEABOT_STRUCT_H
-
+extern "C" {
 typedef struct {
   char *token;
   char *bot_username;
@@ -15,5 +15,5 @@ typedef struct {
   char *amikom_storage_path;
   char *amikom_storage_mhs_path;
 } teabot_struct;
-
+}
 #endif

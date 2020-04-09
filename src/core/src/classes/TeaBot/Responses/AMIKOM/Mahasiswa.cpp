@@ -16,6 +16,8 @@
 #define API_BASE_URL "http://127.0.0.1:8000"
 #define BASE_END API_BASE_URL"/api.php?type=mahasiswa&act=%s&nim=%s&pass=%s%s"
 
+extern teabot_struct teabot;
+
 namespace TeaBot::Responses::AMIKOM {
 
 using namespace TeaBot;
@@ -23,15 +25,16 @@ using namespace TeaBot;
 Mahasiswa::Mahasiswa(route_pass &_r): r(_r)
 {
   std::cout << "Mahasiswa constructor\n";
-  // #define init_dir(A) \
-  //   // std::cout << "test: " << A << std::endl; \
-  //   if (access(A, F_OK) == -1) { \
-  //     mkdir(A, 0750); \
-  //   }
+  #define init_dir(A) \
+    std::cout << "test: \"" << A << "\"" << std::endl; \
+    if (access(A, F_OK) == -1) { \
+      mkdir(A, 0750); \
+    }
 
-  // init_dir(teabot.storage_path);
-  // init_dir(teabot.amikom_storage_path);
-  // init_dir(teabot.amikom_storage_mhs_path);
+  std::cout << "token: " << teabot.token << std::endl;
+  init_dir(teabot.storage_path);
+  init_dir(teabot.amikom_storage_path);
+  init_dir(teabot.amikom_storage_mhs_path);
 
   // #undef init_dir
 }

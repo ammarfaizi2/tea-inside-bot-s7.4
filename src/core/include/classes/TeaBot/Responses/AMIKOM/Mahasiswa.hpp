@@ -9,8 +9,6 @@
 #include <teabot_struct.h>
 #include <classes/TeaBot/ResponseRoutes.hpp>
 
-extern teabot_struct teabot;
-
 namespace TeaBot::Responses::AMIKOM {
 
 class Mahasiswa
