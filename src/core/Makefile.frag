@@ -3,11 +3,11 @@ BASEDIR = ~~BASEDIR~~
 LIB_SHARED_BIN = libteabot7.so
 COMPILER = g++
 LINKER = g++
-LIBS = -lpthread -lcurl
+LIBS = -lpthread -lcurl `pcre2-config --libs8`
 STD_FLAGS = -std=c++17 -Wall
 CONSTANTS = -DTEA_INSIDE_BOT_VERSION=7.4
 
-INCLUDE = -I${BASEDIR}/include/ -I${BASEDIR}/src/third_party
+INCLUDE = -I${BASEDIR}/include/ -I${BASEDIR}/src/third_party `pcre2-config --cflags`
 SOURCE_DIR = src/
 ROOT_DEPDIR = .deps
 
@@ -42,7 +42,7 @@ ${OBJECTS}: | ${DEPDIR}
 	${COMPILER} ${DEPFLAGS} ${COMPILER_FLAGS} -o $@ ${@:%.o=%}
 
 ${LIB_SHARED_BIN}: ${OBJECTS}
-	${LINKER} -shared ${LINKER_FLAGS} -o ${LIB_SHARED_BIN} ${OBJECTS}
+	${LINKER} -shared ${LINKER_FLAGS} -o ${LIB_SHARED_BIN} ${OBJECTS} ${LIBS}
 
 -include ${DEPFILES}
 
