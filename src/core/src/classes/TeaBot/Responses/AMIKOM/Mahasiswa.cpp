@@ -82,6 +82,7 @@ Mahasiswa::~Mahasiswa()
 {
   free(this->userdir);
   free(this->nimfile);
+  free(this->passfile);
 }
 
 bool Mahasiswa::jadwal()
